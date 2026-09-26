@@ -1,17 +1,45 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MallHaul - Your orders</title>
-<link rel="stylesheet" href="/css/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MallHaul - Your Orders</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body data-page="orders">
-<header id="site-header"></header>
-<main id="main"></main>
-<footer id="site-footer"></footer>
-<div id="toast"></div>
-<script src="/js/api.js"></script>
-<script src="/js/app.js"></script>
+  <header id="site-header">
+    <h1>MallHaul</h1>
+  </header>
+
+  <main id="main">
+    <h2>Your Orders</h2>
+    <section id="orders-list">
+      <!-- Example order card -->
+      <article class="order-card">
+        <h3>Order #12345</h3>
+        <p>Status: <span class="status">Shipped</span></p>
+        <p>Items: 2 × Sneakers, 1 × Hoodie</p>
+        <p>Placed on: 25 Sept 2026</p>
+        <button class="track-btn">Track Order</button>
+      </article>
+
+      <article class="order-card">
+        <h3>Order #12346</h3>
+        <p>Status: <span class="status">Processing</span></p>
+        <p>Items: 1 × Laptop Bag</p>
+        <p>Placed on: 26 Sept 2026</p>
+        <button class="track-btn">Track Order</button>
+      </article>
+    </section>
+  </main>
+
+  <footer id="site-footer">
+    <p>&copy; 2026 MallHaul</p>
+  </footer>
+
+  <div id="toast"></div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
 </body>
 </html>

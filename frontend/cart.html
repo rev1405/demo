@@ -1,17 +1,49 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MallHaul - Your trolley</title>
-<link rel="stylesheet" href="/css/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MallHaul - Your Trolley</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body data-page="cart">
-<header id="site-header"></header>
-<main id="main"></main>
-<footer id="site-footer"></footer>
-<div id="toast"></div>
-<script src="/js/api.js"></script>
-<script src="/js/app.js"></script>
+  <header id="site-header">
+    <h1>MallHaul</h1>
+  </header>
+
+  <main id="main">
+    <h2>Your Trolley</h2>
+    <section id="cart-items">
+      <!-- Example cart item -->
+      <article class="cart-item">
+        <h3>Sneakers</h3>
+        <p>Quantity: 2</p>
+        <p>Price: R1200</p>
+        <button class="remove-btn">Remove</button>
+      </article>
+
+      <article class="cart-item">
+        <h3>Hoodie</h3>
+        <p>Quantity: 1</p>
+        <p>Price: R650</p>
+        <button class="remove-btn">Remove</button>
+      </article>
+    </section>
+
+    <section id="cart-summary">
+      <h3>Summary</h3>
+      <p><strong>Total: R3050</strong></p>
+      <a href="/checkout.html" class="btn">Proceed to Checkout</a>
+    </section>
+  </main>
+
+  <footer id="site-footer">
+    <p>&copy; 2026 MallHaul</p>
+  </footer>
+
+  <div id="toast"></div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
 </body>
 </html>

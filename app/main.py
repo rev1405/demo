@@ -88,3 +88,4 @@ if __name__ == "__main__":
     list_users()
     add_item_to_catalog("Sneakers", 1200)
     create_order("tisetso@example.com", "Sneakers")
+

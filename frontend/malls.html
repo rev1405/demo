@@ -1,17 +1,49 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MallHaul - Find your mall</title>
-<link rel="stylesheet" href="/css/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MallHaul - Find Your Mall</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body data-page="malls">
-<header id="site-header"></header>
-<main id="main"></main>
-<footer id="site-footer"></footer>
-<div id="toast"></div>
-<script src="/js/api.js"></script>
-<script src="/js/app.js"></script>
+  <header id="site-header">
+    <h1>MallHaul</h1>
+  </header>
+
+  <main id="main">
+    <h2>Find Your Mall</h2>
+    <form id="mall-search-form" method="GET" action="/malls">
+      <label for="mall_name">Mall Name:</label>
+      <input type="text" id="mall_name" name="mall_name" placeholder="Enter mall name" required>
+      <button type="submit">Search</button>
+    </form>
+
+    <section id="mall-results">
+      <!-- Example mall card -->
+      <article class="mall-card">
+        <h3>East London Mall</h3>
+        <p>Location: East London, South Africa</p>
+        <p>Shops: 120</p>
+        <button class="view-btn">View Details</button>
+      </article>
+
+      <article class="mall-card">
+        <h3>Sandton City</h3>
+        <p>Location: Johannesburg, South Africa</p>
+        <p>Shops: 200+</p>
+        <button class="view-btn">View Details</button>
+      </article>
+    </section>
+  </main>
+
+  <footer id="site-footer">
+    <p>&copy; 2026 MallHaul</p>
+  </footer>
+
+  <div id="toast"></div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
 </body>
 </html>
