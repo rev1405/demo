@@ -14,15 +14,29 @@ def index():
     return render_template("register.html")
 
 @app.route("/register", methods=["POST"])
+@app.route("/register", methods=["POST"])
 def register_user():
     name = request.form["name"]
+    id_number = request.form["id_number"]
+    email = request.form["email"]
+    role = request.form["role"]
     password = request.form["password"]
 
-    if users.find_one({"name": name}):
-        return "User already exists!"
+    # Check if user already exists
+    if users.find_one({"email": email}):
+        return "User with this email already exists!"
 
+    # Hash password securely
     hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
-    users.insert_one({"name": name,"role":role,"email":email,"id_number":id_number ,"password": hashed_pw})
+
+    # Save all details
+    users.insert_one({
+        "name": name,
+        "id_number": id_number,
+        "email": email,
+        "role": role,
+        "password": hashed_pw
+    })
 
     return f"User {name} registered successfully! <br><br><a href='/login_page'>Go to Login</a>"
 
