@@ -27,7 +27,7 @@ orders = db["orders"]
 wallet = db["wallet"]
 
 # ✅ Register route
-@app.post("/api/register")
+@app.post("/api/auth/register")
 async def register(
     name: str = Form(...),
     email: str = Form(...),
@@ -63,7 +63,13 @@ try:
     print("✅ Connected to MongoDB Atlas")
 except Exception as e:
     print("❌ Connection failed:", e)
-
+    
+@app.get("/api/auth/me")
+async def auth_me(email: str = Form(...)):
+    user = users.find_one({"email": email}, {"_id": 0, "password": 0})
+    if not user:
+        return {"error": "User not found"}
+    return {"user": user}
 
 # Example operations
 def add_user(name, email):
