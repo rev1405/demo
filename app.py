@@ -14,7 +14,6 @@ def index():
     return render_template("register.html")
 
 @app.route("/register", methods=["POST"])
-@app.route("/register", methods=["POST"])
 def register():
     try:
         name = request.form.get("name")
