@@ -11,6 +11,7 @@ app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
 
 # 🔗 Replace with your actual Atlas connection string
+
 MONGO_URI = "mongodb+srv://Tisetso:tisetso@tisetso.dahzmcu.mongodb.net/mallhaul_db?retryWrites=true&w=majority" 
 
 # Connect to MongoDB Atlas
