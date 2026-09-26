@@ -1,4 +1,11 @@
 from pymongo import MongoClient
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def root():
+    return {"message": "Hello MallHaul"}
 
 # 🔗 Replace with your actual Atlas connection string
 MONGO_URI ="mongodb+srv://Tisetso:tisetso@tisetso.dahzmcu.mongodb.net/appName=Tisetso" 
