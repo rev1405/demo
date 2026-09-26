@@ -6,7 +6,7 @@ import bcrypt
 app = FastAPI()
 
 # Serve all files in frontend/ as static HTML
-app.mount("/static", StaticFiles(directory="frontend", html=True), name="frontend")
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
 
 
@@ -26,7 +26,7 @@ orders = db["orders"]
 wallet = db["wallet"]
 
 # ✅ Register route
-@app.post("/register")
+@app.post("/api/register")
 async def register(
     name: str = Form(...),
     email: str = Form(...),
