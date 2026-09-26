@@ -1,0 +1,1 @@
+# Reserved for repository classes (MVP uses services directly).
