@@ -1,11 +1,12 @@
 from pymongo import MongoClient
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+
+# Serve all files in frontend/ as static HTML
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
 app = FastAPI()
 
-@app.get("/")
-def root():
-    return {"message": "Hello MallHaul"}
 
 # 🔗 Replace with your actual Atlas connection string
 MONGO_URI ="mongodb+srv://Tisetso:tisetso@tisetso.dahzmcu.mongodb.net/appName=Tisetso" 
