@@ -15,14 +15,24 @@ def index():
 
 @app.route("/register", methods=["POST"])
 def register():
-    name = request.form["name"]
-    password = request.form["password"]
+    try:
+        name = request.form.get("name")
+        password = request.form.get("password")
 
-    if users.find_one({"name": name}):
-        return "User already exists!"
+        if not name or not password:
+            return "Name and password are required!", 400
 
-    hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
-    users.insert_one({"name": name, "password": hashed_pw})
+        if users.find_one({"name": name}):
+            return "User already exists!", 400
+
+        hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+        users.insert_one({"name": name, "password": hashed_pw})
+
+        return f"User {name} registered successfully! <br><br><a href='/login_page'>Go to Login</a>"
+
+    except Exception as e:
+        print("Error during registration:", e)
+        return "Internal Server Error", 500
 
 @app.route("/login_page")
 def login_page():
