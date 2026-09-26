@@ -14,6 +14,7 @@ def index():
     return render_template("register.html")
 
 @app.route("/register", methods=["POST"])
+@app.route("/register", methods=["POST"])
 def register():
     try:
         name = request.form.get("name")
@@ -28,11 +29,13 @@ def register():
         hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
         users.insert_one({"name": name, "password": hashed_pw})
 
+        # Always return a response
         return f"User {name} registered successfully! <br><br><a href='/login_page'>Go to Login</a>"
 
     except Exception as e:
         print("Error during registration:", e)
         return "Internal Server Error", 500
+
 
 @app.route("/login_page")
 def login_page():
