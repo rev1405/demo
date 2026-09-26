@@ -2,10 +2,11 @@ from pymongo import MongoClient
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
+app = FastAPI()
+
 # Serve all files in frontend/ as static HTML
 app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
-app = FastAPI()
 
 
 # 🔗 Replace with your actual Atlas connection string
