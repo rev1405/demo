@@ -16,11 +16,11 @@ def index():
 @app.route("/register", methods=["POST"])
 @app.route("/register", methods=["POST"])
 def register_user():
-    name = request.form["name"]
-    id_number = request.form["id_number"]
-    email = request.form["email"]
-    role = request.form["role"]
-    password = request.form["password"]
+    name = request.form.get["name"]
+    id_number = request.form.get["id_number"]
+    email = request.form.get["email"]
+    role = request.form.get["role"]
+    password = request.form.get["password"]
 
     # Check if user already exists
     if users.find_one({"email": email}):
