@@ -1,6 +1,7 @@
-<<<<<<< HEAD
+
 fastapi>=0.110
-uvicorn[standard]>=0.29
+gunicorn
+
 pymongo>=4.6
 pydantic>=2.7
 pydantic-settings>=2.3
