@@ -5,7 +5,7 @@ import bcrypt
 app = Flask(__name__)
 app.secret_key = "your_generated_secret_key"
 
-client = MongoClient("mongodb+srv://Tisetso:tisetso@tisetso.dahzmcu.mongodb.net/user_db?retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://Tisetso:tisetso@tisetso.dahzmcu.mongodb.net/?appName=Tisetso")
 db = client["user_db"]
 users = db["users"]
 
