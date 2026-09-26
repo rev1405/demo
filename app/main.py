@@ -6,12 +6,12 @@ import bcrypt
 app = FastAPI()
 
 # Serve all files in frontend/ as static HTML
-app.mount("/static", StaticFiles(directory="frontend", html=True), name="frontend")
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
 
 
 # 🔗 Replace with your actual Atlas connection string
-MONGO_URI ="mongodb+srv://Tisetso:tisetso@tisetso.dahzmcu.mongodb.net/appName=Tisetso" 
+MONGO_URI = "mongodb+srv://Tisetso:tisetso@tisetso.dahzmcu.mongodb.net/mallhaul_db?retryWrites=true&w=majority" 
 
 # Connect to MongoDB Atlas
 client = MongoClient(MONGO_URI)
@@ -26,7 +26,7 @@ orders = db["orders"]
 wallet = db["wallet"]
 
 # ✅ Register route
-@app.post("/register")
+@app.post("/api/register")
 async def register(
     name: str = Form(...),
     email: str = Form(...),
