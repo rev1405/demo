@@ -1,21 +1,13 @@
 from pymongo import MongoClient
 
 # 🔗 Replace with your actual Atlas connection string
-<<<<<<< HEAD
-MONGO_URI ="mongodb+srv://Tisetso:tisetso@tisetso.dahzmcu.mongodb.net/mallhaul_db" 
-=======
 MONGO_URI ="mongodb+srv://Tisetso:tisetso@tisetso.dahzmcu.mongodb.net/appName=Tisetso" 
->>>>>>> b3d2aa7 (Finalize fixes for MongoDB URI and Uvicorn)
 
 # Connect to MongoDB Atlas
 client = MongoClient(MONGO_URI)
 
 # Pick your database
 db = client["mallhaul_db"]
-<<<<<<< HEAD
-
-=======
->>>>>>> b3d2aa7 (Finalize fixes for MongoDB URI and Uvicorn)
 # Collections
 users = db["users"]
 catalog = db["catalog"]
