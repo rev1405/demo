@@ -1,78 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-    <title>User Registration</title>
-</head>
-<body>
-    <h2>Register</h2>
-    <form action="/register" method="POST">
-        <label>Name:</label>
-        <input type="text" name="name" required><br><br>
-        <label>Password:</label>
-        <input type="password" name="password" required><br><br>
-        <button type="submit">Register</button>
-    </form>
-
-    <br>
-    <!-- Button to go to login page -->
-    <button onclick="window.location.href='/login_page'">Login</button>
-=======
   <title>User Registration</title>
 </head>
 <body>
   <h2>Register</h2>
-  <form id="registerForm">
+  <form action="/register" method="POST">
     <label>Name:</label><br>
-    <input type="text" id="name" required><br><br>
-
-    <label>ID Number:</label><br>
-    <input type="text" id="id_number" required><br><br>
-
-    <label>Email:</label><br>
-    <input type="email" id="email" required><br><br>
+    <input type="text" name="name" required><br><br>
 
     <label>Password:</label><br>
-    <input type="password" id="password" required><br><br>
-
-    <label>Confirm Password:</label><br>
-    <input type="password" id="confirm_password" required><br><br>
+    <input type="password" name="password" required><br><br>
 
     <button type="submit">Register</button>
   </form>
 
-  <script>
-    document.getElementById("registerForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById("name").value;
-      const id_number = document.getElementById("id_number").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const confirm_password = document.getElementById("confirm_password").value;
-     
-
-      // ✅ Strong password rules (NIST + extra checks)
-      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-      if (!passwordRegex.test(password)) {
-        alert("Password must be at least 8 characters, include uppercase, lowercase, number, and special character.");
-        return;
-      }
-      if (password !== confirm_password) {
-        alert("Passwords do not match.");
-        return;
-      }
-
-      const response = await fetch("http://127.0.0.1:8000/register/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, id_number, email, role, password })
-      });
-
-      const result = await response.json();
-      alert(JSON.stringify(result));
-    });
-  </script>
->>>>>>> a73505ff1964d34fc189c1ece07de30059eb001b
+  <br>
+  <!-- Button to go to login page -->
+  <button onclick="window.location.href='/login_page'">Login</button>
 </body>
 </html>
