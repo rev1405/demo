@@ -1,33 +1,50 @@
-from contextlib import asynccontextmanager
-from pathlib import Path
+from pymongo import MongoClient
 
-from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
+# 🔗 Replace with your actual Atlas connection string
+MONGO_URI ="mongodb+srv://Tisetso:tisetso@tisetso.dahzmcu.mongodb.net/mallhaul_db" 
 
-from app.core.database import close_client, get_client
-from app.routers import (auth, cart, catalog, checkout, demo, ops, orders,
-                         qr, wallet)
+# Connect to MongoDB Atlas
+client = MongoClient(MONGO_URI)
 
+# Pick your database
+db = client["mallhaul_db"]
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    get_client().admin.command("ping")   # fail fast if MongoDB unreachable
-    yield
-    close_client()
+# Collections
+users = db["users"]
+catalog = db["catalog"]
+cart = db["cart"]
+orders = db["orders"]
+wallet = db["wallet"]
 
-
-app = FastAPI(title="MallHaul API", version="1.0.0", lifespan=lifespan)
-
-for r in (auth, catalog, cart, checkout, orders, wallet, ops, qr, demo):
-    app.include_router(r.router)
-
-
-@app.get("/api/health")
-def health():
-    return {"status": "ok"}
+# ✅ Test connection (ping)
+try:
+    client.admin.command("ping")
+    print("✅ Connected to MongoDB Atlas")
+except Exception as e:
+    print("❌ Connection failed:", e)
 
 
-# Frontend (strictly HTML/CSS/vanilla JS) served same-origin so the session
-# cookie flows automatically. [SSDLC: no CORS surface in production]
-FRONTEND = Path(__file__).resolve().parents[1] / "frontend"
-app.mount("/", StaticFiles(directory=str(FRONTEND), html=True), name="frontend")
+# Example operations
+def add_user(name, email):
+    users.insert_one({"name": name, "email": email})
+    print(f"User {name} added.")
+
+def list_users():
+    for u in users.find({}, {"_id": 0}):
+        print(u)
+
+def add_item_to_catalog(item_name, price):
+    catalog.insert_one({"item": item_name, "price": price})
+    print(f"Item {item_name} added to catalog.")
+
+def create_order(user_email, item_name):
+    orders.insert_one({"user": user_email, "item": item_name, "status": "pending"})
+    print(f"Order created for {user_email} → {item_name}")
+
+
+# Demo run
+if __name__ == "__main__":
+    add_user("Tisetso", "tisetso@example.com")
+    list_users()
+    add_item_to_catalog("Sneakers", 1200)
+    create_order("tisetso@example.com", "Sneakers")
