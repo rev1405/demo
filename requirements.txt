@@ -1,4 +1,4 @@
-
+bcrypt
 fastapi>=0.110
 gunicorn
 uvicorn[standard]==0.30.0
