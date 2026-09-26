@@ -22,7 +22,7 @@ def register():
         return "User already exists!"
 
     hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
-    users.insert_one({"name": name, "password": hashed_pw})
+    users.insert_one({"name": name,"role":role,"email":email,"id_number":id_number ,"password": hashed_pw})
 
     return f"User {name} registered successfully! <br><br><a href='/login_page'>Go to Login</a>"
 
